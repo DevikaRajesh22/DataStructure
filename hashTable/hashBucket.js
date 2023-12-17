@@ -1,14 +1,14 @@
-class HashTable {
-    constructor(size) {
-        this.table = new Array(size);
-        this.size = size;
+class HashTable{
+    constructor(size){
+        this.table=new Array(size);
+        this.size=size;
     }
-    hash(key) {
-        let total = 0;
-        for (let i = 0; i < key.length; i++) {
-            total += key.charCodeAt(i);
+    hash(key){
+        let total=0;
+        for(let i=0;i<key.length;i++){
+            total+=key.charCodeAt(i);
         }
-        return total % this.size;
+        return total%this.size;
     }
     display(){
         for(let i=0;i<this.table.length;i++){
@@ -48,7 +48,7 @@ class HashTable {
         if(bucket){
             const sameKeyItem=bucket.find(item=>item[0]===key);
             if(sameKeyItem){
-                bucket.splice(bucket.index[sameKeyItem],1);
+                bucket.splice(bucket.index(sameKeyItem),1);
             }
         }
     }
@@ -56,6 +56,5 @@ class HashTable {
 const table=new HashTable(50);
 table.set('name','Devika');
 table.set('age',20);
-table.display();
 table.set('mane','Rajesh');
 table.display();

@@ -14,5 +14,3 @@ function quickSort(arr){
     }
     return [...quickSort(left),pivot,...quickSort(right)];
 }
-const arr=[9,-3,7,-2,0,1,4];
-console.log(quickSort(arr) );

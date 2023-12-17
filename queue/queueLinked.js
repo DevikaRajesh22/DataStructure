@@ -1,38 +1,25 @@
-class Node{
-    constructor(value){
-        this.value=value;
-        this.next=null;
+class Node {
+    constructor(value) {
+        this.value = value;
+        this.next = null;
     }
 }
-class Queue{
-    constructor(){
-        this.front=null;
-        this.rear=null;
+class Queue {
+    constructor() {
+        this.rear = null;
+        this.front = null
     }
     isEmpty(){
         return this.front===null;
     }
     getSize(){
-        let count=0;
         let curr=this.front;
+        let count=0;
         while(curr){
             count++;
             curr=curr.next;
         }
         return count;
-    }
-    display(){
-        if(this.isEmpty()){
-            console.log('Queue is empty');
-            return null;
-        }
-        let result='';
-        let curr=this.front;
-        while(curr){
-            result+=curr.value+' -> ';
-            curr=curr.next;
-        }
-        console.log(result);
     }
     peek(){
         if(this.isEmpty()){
@@ -41,10 +28,19 @@ class Queue{
         }
         return this.front.value;
     }
+    display(){
+        let queueValues='';
+        let curr=this.front;
+        while(curr){
+            queueValues+=curr.value+' -> ';
+            curr=curr.next;
+        }
+        console.log(queueValues);
+    }
     enqueue(element){
         const node=new Node(element);
         if(this.isEmpty()){
-            this.front=this.rear=node;
+            this.rear=this.front=node;
         }else{
             this.rear.next=node;
             this.rear=node;
@@ -63,14 +59,3 @@ class Queue{
         return frontNode;
     }
 }
-const queue=new Queue();
-queue.display();
-queue.enqueue(10);
-queue.enqueue(20);
-queue.enqueue(30);
-queue.enqueue(40);
-queue.display();
-queue.dequeue();
-queue.display();
-console.log('Peek : ',queue.peek());
-console.log('Size : ',queue.getSize());

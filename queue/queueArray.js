@@ -5,7 +5,7 @@ class Queue{
         this.rear=-1;
     }
     isEmpty(){
-        return this.front>this.rear;
+        return this.rear<this.front;
     }
     getSize(){
         return this.rear-this.front+1;
@@ -34,7 +34,6 @@ class Queue{
     }
     dequeue(){
         if(this.isEmpty()){
-            console.log('Queue is empty');
             return null;
         }
         const frontElement=this.items[this.front];
@@ -51,5 +50,5 @@ queue.enqueue(40);
 queue.display();
 queue.dequeue();
 queue.display();
+console.log('Size : ',queue.getSize());
 console.log('Peek : ',queue.peek());
-console.log('size : ',queue.getSize());

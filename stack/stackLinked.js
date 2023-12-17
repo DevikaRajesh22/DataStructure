@@ -1,34 +1,37 @@
-class Node {
-    constructor(value) {
-        this.value = value;
-        this.next = null;
+class Node{
+    constructor(value){
+        this.value=value;
+        this.next=null;
     }
 }
-class Stack {
-    constructor() {
-        this.top = null;
-        this.size = 0;
+class Stack{
+    constructor(){
+        this.top=null;
+        this.size=0;
     }
-    isEmpty() {
-        return this.size === 0;
+    isEmpty(){
+        return this.size===0;
     }
-    getSize() {
+    getSize(){
         return this.size;
     }
-    peek() {
-        if (this.isEmpty()) {
+    peek(){
+        if(this.isEmpty()){
             console.log('Stack is empty');
             return null;
-        } else {
-            return this.top.value;
         }
+        return this.top.value;
     }
-    display() {
-        let stackValues = '';
-        let curr = this.top;
-        while (curr) {
-            stackValues += curr.value + ' - ';
-            curr = curr.next;
+    display(){
+        if(this.isEmpty()){
+            console.log('Stack is empty');
+            return null;
+        }
+        let stackValues='';
+        let curr=this.top;
+        while(curr){
+            stackValues+=curr.value+' -> ';
+            curr=curr.next;
         }
         console.log(stackValues);
     }
@@ -44,10 +47,10 @@ class Stack {
             console.log('Stack is empty');
             return null;
         }
-        const poppedElement=this.top;
+        const poppedNode=this.top.value;
         this.top=this.top.next;
         this.size--;
-        return poppedElement.value;
+        return poppedNode;
     }
 }
 const stack=new Stack();
@@ -57,8 +60,7 @@ stack.push(20);
 stack.push(30);
 stack.push(40);
 stack.display();
-console.log('Size : ',stack.getSize());
-console.log('Top element : ',stack.peek());
 stack.pop();
 stack.display();
-console.log('Top element : ',stack.peek());
+console.log('Size : ',stack.getSize());
+console.log('Peek : ',stack.peek());
