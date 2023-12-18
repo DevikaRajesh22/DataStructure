@@ -3,7 +3,7 @@ class MinHeap {
         this.heap = [];
     }
     displayHeap() {
-        console.log('Min heap : ', this.heap);
+        console.log('Min Heap : ', this.heap);
     }
     insert(value) {
         this.heap.push(value);
@@ -11,10 +11,10 @@ class MinHeap {
     }
     heapifyUp() {
         let currIndex = this.heap.length - 1;
-        while (currIndex) {
+        while (currIndex > 0) {
             let parentIndex = Math.floor(currIndex / 2 - 1);
             if (this.heap[currIndex] < this.heap[parentIndex]) {
-                this.swap(currIndex, parentIndex);
+                this.swap(parentIndex, currIndex);
                 currIndex = parentIndex;
             } else {
                 break;
@@ -34,19 +34,19 @@ class MinHeap {
             this.heapifyDown(index);
             return deletedValue;
         } else {
-            console.log('Element not found');
+            console.log('Not found');
             return null;
         }
     }
     heapifyDown(index) {
         let smallest = index;
-        let leftChildIndex = 2 * index + 1;
-        let rightChildIndex = 2 * index + 2;
-        if (leftChildIndex < this.heap.length && this.heap[leftChildIndex] < this.heap[smallest]) {
-            smallest = leftChildIndex;
+        let left = 2 * index + 1;
+        let right = 2 * index + 2;
+        if (left < this.heap.length && this.heap[left] < this.heap[smallest]) {
+            smallest = left;
         }
-        if (rightChildIndex < this.heap.length && this.heap[rightChildIndex] < this.heap[smallest]) {
-            smallest = rightChildIndex;
+        if (right < this.heap.length && this.heap[right] < this.heap[smallest]) {
+            smallest = right;
         }
         if (smallest != index) {
             this.swap(smallest, index);
@@ -54,7 +54,7 @@ class MinHeap {
         }
     }
 }
-const heap = new MaxHeap();
+const heap=new MinHeap();
 heap.insert(10);
 heap.insert(5);
 heap.insert(15);

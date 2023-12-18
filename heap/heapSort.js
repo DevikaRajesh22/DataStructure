@@ -9,13 +9,13 @@ function heapify(arr, length, parentIndex) {
         largest = right;
     }
     if (largest != parentIndex) {
-        [arr[parentIndex], arr[largest]] = [arr[largest], arr[parentIndex]];
-        heapify(arr, length, largest);
+        [arr[largest], arr[parentIndex]] = [arr[parentIndex], arr[largest]];
+        heapify(arr, length, parentIndex);
     }
     return arr;
 }
 function heapSort(arr) {
-    const length = arr.length;
+    let length = arr.length;
     let lastParentIndex = Math.floor(length / 2 - 1);
     let lastChildIndex = length - 1;
     while (lastParentIndex >= 0) {
@@ -29,4 +29,4 @@ function heapSort(arr) {
     }
     return arr;
 }
-console.log(heapSort([4,6,3,2]));
+console.log(heapSort([4, 6, 3, 2]));

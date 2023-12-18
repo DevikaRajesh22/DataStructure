@@ -17,7 +17,7 @@ class BinarySearchTree {
         if (this.isEmpty()) {
             this.root = newNode;
         } else {
-            return this._insertNode(this.root, newNode);
+            this._insertNode(this.root, newNode);
         }
     }
     _insertNode(root, newNode) {
@@ -40,21 +40,14 @@ class BinarySearchTree {
     }
     _search(root, value) {
         if (root === null) {
-            return false;
+            return null;
         }
-        if (root.value === value) {
+        if(root.value===value){
             return true;
-        } else if (value < root.value) {
+        }else if (value < root.value) {
             return this._search(root.left, value);
         } else {
             return this._search(root.right, value);
-        }
-    }
-    DFSPreorder(root) {
-        if (root) {
-            console.log(root.value);
-            this.DFSPreorder(root.left);
-            this.DFSPreorder(root.right);
         }
     }
     DFSInorder(root) {
@@ -62,6 +55,13 @@ class BinarySearchTree {
             this.DFSInorder(root.left);
             console.log(root.value);
             this.DFSInorder(root.right);
+        }
+    }
+    DFSPreorder(root) {
+        if (root) {
+            console.log(root.value);
+            this.DFSPreorder(root.left);
+            this.DFSPreorder(root.right);
         }
     }
     DFSPostorder(root) {
@@ -114,10 +114,11 @@ class BinarySearchTree {
             if (!root.left && !root.right) {
                 return null;
             }
+            if (!root.left) {
+                return root.right;
+            }
             if (!root.right) {
                 return root.left;
-            } else if (!root.left) {
-                return root.right;
             }
             root.value = this.min(root.right);
             root.right = this.deleteNode(root.right, root.value);
@@ -125,24 +126,20 @@ class BinarySearchTree {
         return root;
     }
 }
+
 const bst = new BinarySearchTree();
 bst.insert(10);
 bst.insert(5);
 bst.insert(15);
 bst.insert(3);
-bst.insert(2);
-console.log('BFS Traversal : ');
+bst.insert(7);
 bst.BFSTraversal();
-console.log('DFS Preorder Traversal : ');
+console.log(bst.search(15));
+console.log('Preorder : ');
 bst.DFSPreorder(bst.root);
-console.log('DFS Inorder Traversal : ');
+console.log('Inorder : ');
 bst.DFSInorder(bst.root);
-console.log('DFS Postorder traversal : ');
+console.log('Postorder : ');
 bst.DFSPostorder(bst.root);
-console.log('15 ? ',bst.search(15));
-console.log('20 ? ',bst.search(20));
-console.log('Minimum : ',bst.min(bst.root));
-console.log('Maximum : ',bst.max(bst.root));
-console.log('Deleted 10 : ');
-bst.delete(10);
-bst.BFSTraversal();
+
+
