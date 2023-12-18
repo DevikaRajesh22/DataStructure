@@ -1,55 +1,55 @@
-class MaxHeap {
-    constructor() {
-        this.heap = [];
+class MaxHeap{
+    constructor(){
+        this.heap=[];
     }
-    displayHeap() {
-        console.log('Max Heap : ', this.heap);
+    displayHeap(){
+        console.log('Max heap : ',this.heap);
     }
-    insert(value) {
+    insert(value){
         this.heap.push(value);
         this.heapifyUp();
     }
-    heapifyUp() {
-        let currIndex = this.heap.length - 1;
-        while (currIndex > 0) {
-            let parentIndex = Math.floor(currIndex / 2 - 1);
-            if (this.heap[currIndex] > this.heap[parentIndex]) {
-                this.swap(currIndex, parentIndex);
-                currIndex = parentIndex;
-            } else {
+    heapifyUp(){
+        let currentIndex=this.heap.length-1;
+        while(currentIndex>0){
+            let parentIndex=Math.floor(currentIndex/2-1);
+            if(this.heap[currentIndex]>this.heap[parentIndex]){
+                this.swap(currentIndex,parentIndex);
+                currentIndex=parentIndex;
+            }else{
                 break;
             }
         }
     }
-    swap(index1, index2) {
-        let temp = this.heap[index1];
-        this.heap[index1] = this.heap[index2];
-        this.heap[index2] = temp;
+    swap(index1,index2){
+        let temp=this.heap[index1];
+        this.heap[index1]=this.heap[index2];
+        this.heap[index2]=temp;
     }
-    delete(value) {
-        let index = this.heap.indexOf(value);
-        if (index !== -1) {
-            this.swap(index, this.heap.length - 1);
-            const deletedValue = this.heap.pop();
+    delete(value){
+        const index=this.heap.indexOf(value);
+        if(index !=-1){
+            this.swap(index,this.heap.length-1);
+            const deletedValue=this.heap.pop();
             this.heapifyDown(index);
             return deletedValue;
-        } else {
-            console.log('Not found');
+        }else{
+            console.log('not found');
             return null;
         }
     }
-    heapifyDown(index) {
-        let largest = index;
-        let left = 2 * index + 1;
-        let right = 2 * index + 2;
-        if (left < this.heap.length && this.heap[left] > this.heap[largest]) {
-            largest = left;
+    heapifyDown(index){
+        let largest=index;
+        let left=2*index+1;
+        let right=2*index+2;
+        if(left<this.heap.length && this.heap[left]>this.heap[largest]){
+            largest=left;
         }
-        if (right < this.heap.length && this.heap[right] > this.heap[largest]) {
-            largest = right;
+        if(right<this.heap.length && this.heap[right]>this.heap[largest]){
+            largest=right;
         }
-        if (largest != index) {
-            this.swap(largest, index);
+        if(largest!=index){
+            this.swap(index,largest);
             this.heapifyDown(largest);
         }
     }

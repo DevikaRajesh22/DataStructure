@@ -43,7 +43,7 @@ class Graph {
     }
     BFSTraversal(startingVertex, visitCallback) {
         const visited = new Set();
-        const queue = [startingVertex];
+        let queue = [startingVertex];
         while (queue.length !== 0) {
             let currentVertex = queue.shift();
             if (!visited.has(currentVertex)) {
